@@ -1,4 +1,4 @@
-function FacilityDetails({next, back}) {
+function FacilityDetails() {
     return(
         <div>
             <h1 className='mb-3 text-2xl font-bold tracking-tight text-gray-900 dark:text-white' >FacilityDetails</h1>
@@ -7,8 +7,6 @@ function FacilityDetails({next, back}) {
                     Name:
                     <input type="text" id="name" className="bg-gray-50 border border-gray-300 text-gray-900" />
                 </label>
-                <button onClick={back} >Back</button>
-                <button onClick={next} >Next</button>
             </form>
         </div>
     )

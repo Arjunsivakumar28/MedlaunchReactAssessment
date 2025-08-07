@@ -1,5 +1,26 @@
 @import 'tailwindcss';
 
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
+@theme {
+  --font-sans: "Nunito Sans", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+}
+
+#root {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+/* 
 :root {
   font-family: cursive;
   line-height: 1.5;
@@ -67,4 +88,4 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-}
+} */
