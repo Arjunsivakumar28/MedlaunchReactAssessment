@@ -1,5 +1,4 @@
 import { use, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
 import DnvQuoteRequest from '../Components/DnvQuoteRequest'
 import FacilityDetails from '../Components/FacilityDetails'
 import LeadershipContacts from '../Components/LeadershipContacts'
@@ -19,11 +18,6 @@ const stepTitles = {
 function FormPage() {
 
     const [step, setStep] = useState(1)
-
-    const componentName = useSelector((state) => state.form.name)
-    const componentNumber = useSelector((state) => state.form.number)
-
-    const dispatch = useDispatch()
 
     const next = () => {
         setStep(step + 1)
