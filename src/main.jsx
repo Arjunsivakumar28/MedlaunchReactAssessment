@@ -6,12 +6,11 @@ import { BrowserRouter } from 'react-router-dom'
 import { FormProvider } from './Components/FormContext/FormContext.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <BrowserRouter>
-      <FormProvider>
+  <FormProvider>
+    <StrictMode>
+      <BrowserRouter>
         <App />
-      </FormProvider>
-    </BrowserRouter>
-
-  </StrictMode>,
+      </BrowserRouter>
+    </StrictMode>
+  </FormProvider>,
 )

@@ -7,7 +7,7 @@ import FacilityDetails from '../Components/Step2/FacilityDetails'
 import LeadershipContacts from '../Components/Step3/LeadershipContacts'
 import ReviewAndSubmit from '../Components/ReviewAndSubmit'
 import ServicesAndCertification from '../Components/ServicesAndCertification'
-import SiteInformation from '../Components/SiteInformation'
+import SiteInformation from '../Components/Step4/SiteInformation'
 import { FormTitle } from '../Components/MainPageComponents/FormTitleComponent/FormTitle'
 import { LowerButtons } from '../Components/MainPageComponents/LowerButtonComponent/LowerButtons'
 
