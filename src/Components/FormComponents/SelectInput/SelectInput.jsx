@@ -16,7 +16,7 @@ export const SelectInput = ({options, step, classname, idname, label, inpAttr}) 
   }
 
   return (
-    <div className='select-container w-fullflex flex-col justify-center items-start'>
+    <div className='select-container w-full flex flex-col justify-center items-start'>
       <h1 className='w-full text-left text-base font-bold text-[#343434] mb-2' >{label}</h1>
       <fieldset role='radiogroup'>
         {options.map((option, index) => (

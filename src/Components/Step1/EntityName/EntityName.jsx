@@ -14,7 +14,7 @@ export const EntityName = () => {
         checked && dispatch({ type: 'SET_VALUE', step: 'step1', field: 'dba-name', payload: state.values.step1['entity-name'] })
     }, [state.values.step1['entity-name'], checked])
 
-    // effect to handle after checkbox interaction between entitiy and dba
+    // handle after checkbox interaction between entitiy and dba
     const dbaAttr = {
         value: checked ? state.values.step1['entity-name'] : undefined
     }
@@ -25,7 +25,7 @@ export const EntityName = () => {
             <h1 className='mb-8 text-2xl font-bold text-[#4E4E4E]'>Identify Healthcare Organization</h1>
             <FieldInput type='text' step='step1' label='Legal Entity Name*' classname='mb-5' idname='entity-name' />
             <FieldInput type='text' step='step1' label='Doing Business As (d/b/a) Name*' classname='mb-2' idname='dba-name' inpAttr={dbaAttr} />
-            <CheckboxInput setCheck={isChecked} label='Same as Legal Entity Name' classname='mb-4' />
+            <CheckboxInput idname='checkbox-entity-name' step='step1' setCheck={isChecked} label='Same as Legal Entity Name' classname='mb-4' labelclassname='ms-2 text-base font-bold text-black' />
         </div>
     )
 }
