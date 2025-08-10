@@ -14,14 +14,8 @@ export const EntityName = () => {
         checked && dispatch({ type: 'SET_VALUE', step: 'step1', field: 'dba-name', payload: state.values.step1['entity-name'] })
     }, [state.values.step1['entity-name'], checked])
 
-    // set default values based on saved values
-    const entityAttr = {
-        defaultValue: state.values.step1['entity-name'],
-    }
-
     // effect to handle after checkbox interaction between entitiy and dba
     const dbaAttr = {
-        defaultValue: state.values.step1['dba-name'],
         value: checked ? state.values.step1['entity-name'] : undefined
     }
     
@@ -29,7 +23,7 @@ export const EntityName = () => {
     return (
         <div className='healthcare-org w-full flex flex-col items-start mb-5' >
             <h1 className='mb-8 text-2xl font-bold text-[#4E4E4E]'>Identify Healthcare Organization</h1>
-            <FieldInput type='text' step='step1' label='Legal Entity Name*' classname='mb-5' idname='entity-name' inpAttr={entityAttr} />
+            <FieldInput type='text' step='step1' label='Legal Entity Name*' classname='mb-5' idname='entity-name' />
             <FieldInput type='text' step='step1' label='Doing Business As (d/b/a) Name*' classname='mb-2' idname='dba-name' inpAttr={dbaAttr} />
             <CheckboxInput setCheck={isChecked} label='Same as Legal Entity Name' classname='mb-4' />
         </div>
