@@ -1,0 +1,28 @@
+import React from 'react'
+import { ClearButton } from '../../Buttons/ClearButtonComponent/ClearButton'
+import { FilledButton } from '../../Buttons/FilledButtonComponent/FilledButton'
+
+export const LowerButtons = ({step, onBack, onNext, onSave}) => {
+
+    let backButton
+    if (step > 1) {
+        backButton = <ClearButton text='Previous' type='button' click={onBack} />
+    } else {
+        backButton = <ClearButton text='Exit' type='button'/>
+    }
+
+    let frontButton
+    if (step < 6) {
+        frontButton = <FilledButton text='Next' type='button' click={onNext} classname='ms-4' />
+    } else {
+        frontButton = <FilledButton text='Submit Application' type='submit' classname='ms-auto' />
+    }
+
+  return (
+    <div className='buttons max-w-240 w-full flex items-center'>
+        {backButton}
+        {step < 6 && <FilledButton text='Save' type='button' click={onSave} classname='ms-auto' />}
+        {frontButton}
+    </div>
+  )
+}
