@@ -1,5 +1,5 @@
 import React from 'react'
-import { ProgressBar } from '../../ProgressBar/ProgressBar'
+import { ProgressBar } from '../ProgressBar/ProgressBar'
 
 export const FormTitle = ({step, stepTitles}) => {
   return (

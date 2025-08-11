@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react'
 import { SiteCard } from './SiteCard/SiteCard';
 import { FormContext } from '../FormContext/FormContext';
-import { AddFileCard } from './AddFileCard/AddFileCard';
+import { AddFileCard } from './ManageFiles/ManageFiles';
 
 
 function SiteInformation() {

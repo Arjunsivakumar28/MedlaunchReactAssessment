@@ -21,7 +21,7 @@ export const UploadFileCard = () => {
 
     }
 
-    // remove cs file
+    // remove csv file
     const onRemove = (index) => {
         const next = files.filter((_, i) => i !== index)
         dispatch({ type: 'SET_VALUE', step: 'step4', field: 'csvFiles', payload: next })

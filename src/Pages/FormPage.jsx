@@ -25,10 +25,6 @@ function FormPage() {
     const { state, dispatch } = useContext(FormContext)
     const [step, setStep] = useState(1)
 
-    const onSubmit = (data) => {
-        console.log(data)
-    }
-
     const save = () => {
         console.log(state.values)
     }
