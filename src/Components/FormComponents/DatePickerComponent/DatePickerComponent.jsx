@@ -14,9 +14,6 @@ export const DatePickerComponent = ({step, id, classname, label, single}) => {
     }
 
     const setDate = (date) => {
-        // console.log("the object: ", dateObj)
-        // console.log(step, id, classname, label, single)
-        // console.log([...dateObj, date])
         single ? dispatch({ type: 'SET_VALUE', step: step, field: id, payload: date.toLocaleDateString() }) 
                 : dispatch({ type: 'SET_VALUE', step: step, field: id, payload: [...dateObj, date.toLocaleDateString()] })
     }

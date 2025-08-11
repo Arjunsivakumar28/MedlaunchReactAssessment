@@ -1,9 +1,7 @@
-import React, { useState, useEffect, useContext } from 'react'
-import { FormContext } from '../../FormContext/FormContext'
+import React, { useState} from 'react'
 
 export const DropDownCard = ({ title, id, step, defaultOpen = false, children }) => {
 
-    const { state, dispatch } = useContext(FormContext)
     const [open, setOpen] = useState(defaultOpen)
 
     const handleEdit = () => { }

@@ -20,6 +20,8 @@ export const MultiSelectButtons = ({ input, classname, clear, id, step, single, 
 
     let multiButtons
 
+    // using different types of buttons (clear vs filled) and different types of input (array vs single)
+    // to show and remove multiple selections
     if (clear) {
         if (single) {
             multiButtons = (input && <ClearSelectButton
