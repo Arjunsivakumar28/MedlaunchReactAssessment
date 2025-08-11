@@ -1,3 +1,4 @@
+// file upload component (style changes using label and hiding file input)
 export const UploadFile = ({ label, id, onChange }) => {
     return (
         <div className='flex justify-center'>

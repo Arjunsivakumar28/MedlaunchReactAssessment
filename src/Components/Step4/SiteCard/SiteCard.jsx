@@ -1,6 +1,8 @@
 import { useState, useEffect, useContext } from 'react'
 import { BlockButton } from '../../Buttons/BlockButtonComponent/BlockButton'
 import { FormContext } from '../../FormContext/FormContext'
+
+// Site card component of step 4 (choosing between single or multiple)
 export const SiteCard = () => {
 
     const [singleButton, setSingleButton] = useState(false)

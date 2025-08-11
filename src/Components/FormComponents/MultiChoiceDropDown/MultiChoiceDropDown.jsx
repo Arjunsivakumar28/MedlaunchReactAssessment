@@ -1,11 +1,13 @@
 import React, {useContext} from 'react'
 import { FormContext } from '../../FormContext/FormContext'
 
+
+// Similar to DropDownSelect, but allows selection of multiple options
 export const MultiChoiceDropDown = ({ options, defaultoption, step, classname, labelclassname = '', idname, label, inpAttr }) => {
     const { state, dispatch } = useContext(FormContext)
     const stored = state.values[step]?.[idname] || []
 
-
+    // dispatch (set value) to context when input is recieved
     const handleOnChange = (e) => {
         if (e.target.value != '' && !stored.includes(e.target.value)) {
             dispatch({ type: 'SET_VALUE', step: step, field: idname, payload: [...stored, e.target.value] })

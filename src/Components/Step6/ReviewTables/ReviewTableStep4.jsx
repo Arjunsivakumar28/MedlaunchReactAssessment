@@ -2,6 +2,7 @@ import { useContext } from 'react'
 import { FormContext } from '../../FormContext/FormContext'
 import { ReviewCard } from '../../FormComponents/ReviewCard/ReviewCard'
 
+// Review table for step 4
 export const ReviewTableStep4 = () => {
 
     const { state, dispatch } = useContext(FormContext)
@@ -11,6 +12,7 @@ export const ReviewTableStep4 = () => {
     const siteType = step4?.['facility-options'] || ''
     const files = step4?.['csvFiles'] || []
 
+    // data (partially fake) for ReviewCard to create ReviewCard component in table
     const testDatas = files.map((file, index) => ([
             `Practice Location ${index + 1}`,
             `name: ${file.name}`,

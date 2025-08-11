@@ -1,5 +1,6 @@
 import React from 'react'
 
+// progress bar to indicate which step of form user is currently on
 export const ProgressBar = ({step, stepTitles}) => {
   return (
     <div className='progress-bar flex space-x-2 w-full'>

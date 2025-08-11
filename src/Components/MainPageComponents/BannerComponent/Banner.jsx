@@ -1,5 +1,6 @@
 import React from 'react'
 
+// the top banner on the main page
 export const Banner = () => {
   return (
     <div className='top-banner justify-center flex items-center p-6 w-full h-24 bg-[#1A3A70]'>

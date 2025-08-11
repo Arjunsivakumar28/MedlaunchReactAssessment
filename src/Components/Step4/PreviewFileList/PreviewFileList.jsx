@@ -1,3 +1,5 @@
+// file preview componen of step 4 
+// (view uploaded files, preview, and delete uploads)
 export const PreviewFileList = ({ files, onRemove }) => {
 
     return (

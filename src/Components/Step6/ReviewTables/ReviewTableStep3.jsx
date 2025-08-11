@@ -2,11 +2,13 @@ import { useContext } from 'react'
 import { FormContext } from '../../FormContext/FormContext'
 import { ReviewCard } from '../../FormComponents/ReviewCard/ReviewCard'
 
+// Review table for step 3
 export const ReviewTableStep3 = () => {
 
     const { state, dispatch } = useContext(FormContext)
     const step3 = state.values['step3']
 
+    // data for ReviewCard to create ReviewCard component in table
     const step3CardDataCeo = [
         `${step3?.['first-name-leadership-ceo-card'] || ''} ${step3?.['last-name-leadership-ceo-card'] || ''}`,
         `Phone: ${step3?.['phone-number-leadership-ceo-card'] || ''}`,

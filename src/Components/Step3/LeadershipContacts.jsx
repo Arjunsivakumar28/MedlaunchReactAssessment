@@ -2,6 +2,7 @@ import {useState, useEffect, useContext} from 'react'
 import { FormContext } from '../FormContext/FormContext'
 import { ContactCard } from './ContactCard/ContactCard'
 
+// Step 3 main page
 function LeadershipContacts() {
     const [active, setActive] = useState(false)
 

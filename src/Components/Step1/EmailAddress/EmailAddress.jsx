@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { ClearButton } from '../../Buttons/ClearButtonComponent/ClearButton'
 
+// Email address input component (handled separately due to verification and custom stylings)
 export const EmailAddress = ({address, setAddress, verify, setVerify}) => {
 
     // handle email verfifiction

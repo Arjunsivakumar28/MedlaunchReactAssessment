@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { SelectInput } from '../FormComponents/SelectInput/SelectInput'
 
+// Step 2 options
 const options = [
     'Short-Term Acute Care',
     'Long-Term Acute Care',
@@ -10,6 +11,7 @@ const options = [
     'Other'
 ]
 
+// Step 2 main page
 function FacilityDetails() {
     const [active, setActive] = useState(false)
 

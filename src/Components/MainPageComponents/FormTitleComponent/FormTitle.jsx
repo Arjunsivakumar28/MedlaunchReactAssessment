@@ -1,6 +1,7 @@
 import React from 'react'
 import { ProgressBar } from '../ProgressBar/ProgressBar'
 
+// The title of the form indicating step name and step count
 export const FormTitle = ({step, stepTitles}) => {
   return (
     <div className='form-title flex flex-col justify-center items-center mb-5 max-w-240 w-full h-30 bg-transparent'>

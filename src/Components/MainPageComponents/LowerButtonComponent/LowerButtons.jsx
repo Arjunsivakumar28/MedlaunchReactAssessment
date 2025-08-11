@@ -2,6 +2,8 @@ import React from 'react'
 import { ClearButton } from '../../Buttons/ClearButtonComponent/ClearButton'
 import { FilledButton } from '../../Buttons/FilledButtonComponent/FilledButton'
 
+// Lower buttons of form (such as next, previous, submit, exit, and save)
+// Handles when each button is seen and makes sure step count doesn't go out of bounds
 export const LowerButtons = ({step, onBack, onNext, onSave, onSubmit}) => {
 
     let backButton

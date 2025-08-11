@@ -3,6 +3,7 @@ import { FormContext } from '../../FormContext/FormContext'
 import { MultiChoiceDropDown } from '../../FormComponents/MultiChoiceDropDown/MultiChoiceDropDown'
 import { MultiSelectButtons } from '../../FormComponents/MultiSelectButtons/MultiSelectButtons'
 
+// standard actions to apply component of step 5 
 export const StandardsToApply = () => {
 
     const { state, dispatch } = useContext(FormContext)

@@ -8,6 +8,8 @@ import { ReviewTableStep4 } from './ReviewTables/ReviewTableStep4'
 import { ReviewTableStep5 } from './ReviewTables/ReviewTableStep5'
 import { SubmitCard } from './SubmitCard/SubmitCard'
 
+// Step 6 main page 
+// (contains 5 DropDownCard component for each step and a final sumbission component)
 function ReviewAndSubmit() {
     const [active, setActive] = useState(false)
 
@@ -63,7 +65,6 @@ function ReviewAndSubmit() {
             <SubmitCard />
         </div>
     )
-
 }
 
 export default ReviewAndSubmit;

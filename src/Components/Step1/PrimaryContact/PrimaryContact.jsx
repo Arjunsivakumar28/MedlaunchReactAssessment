@@ -1,9 +1,9 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { FormContext } from '../../FormContext/FormContext'
 import { FieldInput } from '../../FormComponents/FieldInput/FieldInput'
-import { ClearButton } from '../../Buttons/ClearButtonComponent/ClearButton'
 import { EmailAddress } from '../EmailAddress/EmailAddress'
 
+// primary contact secton of step 1
 export const PrimaryContact = () => {
 
     const {state, dispatch } = useContext(FormContext)

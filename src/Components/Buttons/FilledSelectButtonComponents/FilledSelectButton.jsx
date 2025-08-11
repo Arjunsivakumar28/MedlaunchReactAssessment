@@ -1,5 +1,5 @@
 import React from 'react'
-// to select and remove options 
+// to display selected choices and remove selected choices
 export const FilledSelectButton = ({ text, type, click, change, classname, attr, svgclass}) => {
   return (
     <button {...attr} type={type} onClick={click} onChange={change} className={`flex justify-between items-center text-white transition-all delay-150 duration-300 ease-in-out hover:text-white border border-[#0056A3] bg-[#0056A3] hover:bg-[#004b8f] font-bold rounded-lg text-base px-8 py-4.5 text-center ${classname}`} >

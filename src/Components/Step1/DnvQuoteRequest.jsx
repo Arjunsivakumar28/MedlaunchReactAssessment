@@ -2,6 +2,7 @@ import { useState, useEffect} from 'react'
 import { EntityName } from './EntityName/EntityName'
 import { PrimaryContact } from './PrimaryContact/PrimaryContact'
 
+// Step 1 main page
 function DnvQuoteRequest() {
     const [active, setActive] = useState(false)
 

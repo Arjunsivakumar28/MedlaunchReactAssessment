@@ -3,6 +3,8 @@ import { FormContext } from '../../FormContext/FormContext'
 import { FieldInput } from '../../FormComponents/FieldInput/FieldInput'
 import { CheckboxInput } from '../../FormComponents/CheckboxInput/CheckboxInput'
 
+
+// entity and dba section of step1
 export const EntityName = () => {
 
     const { state, dispatch } = useContext(FormContext)

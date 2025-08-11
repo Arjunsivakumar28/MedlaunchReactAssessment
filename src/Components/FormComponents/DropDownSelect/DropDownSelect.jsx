@@ -1,12 +1,13 @@
 import React, { useContext, useState } from 'react'
 import { FormContext } from '../../FormContext/FormContext'
 
+// Regular dropdown component to select from multiple options
 export const DropDownSelect = ({ options, step, defaultoption, classname, labelclassname = '', idname, label, inpAttr }) => {
 
     const { state, dispatch } = useContext(FormContext)
     const [value, setValue] = useState(null)
 
-
+    // dispatch (set value) to context when input is recieved
     const handleOnChange = (e) => {
         setValue(e.target.value)
         console.log('selectd: ', value)

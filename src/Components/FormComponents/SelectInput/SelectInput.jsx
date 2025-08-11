@@ -1,14 +1,17 @@
 import {useState, useContext, useEffect} from 'react'
 import { FormContext } from '../../FormContext/FormContext'
 
+// multiple choice type selection component
 export const SelectInput = ({options, step, classname, idname, label, inpAttr}) => {
   const {state, dispatch} = useContext(FormContext)
   const [selectedOption, setSelectedOption] = useState('')
 
+  // set default value stored in context
   useEffect(() => {
     setSelectedOption(state.values[step][idname])
   }, [])
 
+  // dispatch (set value) to context when input is recieved
   const handleOptionChange = (option) => {
     console.log('selectd: ', option)
     setSelectedOption(option)

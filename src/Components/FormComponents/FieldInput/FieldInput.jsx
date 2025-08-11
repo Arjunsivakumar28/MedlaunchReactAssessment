@@ -1,10 +1,12 @@
 import React, {useContext} from 'react'
 import { FormContext } from '../../FormContext/FormContext'
 
+// Field input component (also manages dispatching data to context at edge level)
 export const FieldInput = ({setValue, type, step, label, classname, idname, inpAttr}) => {
 
   const {state, dispatch} = useContext(FormContext)
   
+  // dispatch (set value) to context when input is recieved
   const handleChange = (e) => {
     setValue != undefined && setValue(e.target.value)
     dispatch({type: 'SET_VALUE', step: step, field: idname, payload: e.target.value})

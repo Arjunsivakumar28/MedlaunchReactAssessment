@@ -3,6 +3,9 @@ import { FormContext } from '../../FormContext/FormContext'
 import { DatePickerComponent } from '../../FormComponents/DatePickerComponent/DatePickerComponent'
 import { MultiSelectButtons } from '../../FormComponents/MultiSelectButtons/MultiSelectButtons'
 
+// Stroke certification component of step 5
+// date selection done using DatePickerComponent and selction displayed 
+// using MultiSelectButtons component
 export const StrokeCertifications = () => {
 
     const { state, dispatch } = useContext(FormContext)
@@ -18,7 +21,7 @@ export const StrokeCertifications = () => {
                 <MultiSelectButtons
                     input={state.values.step5?.['stroke-expiry-date'] || null}
                     clear={false}
-                    id='stroke-expiry-date-btns'
+                    id='stroke-expiry-date'
                     step='step5'
                     single={true}
                     btnatr={{ disabled: false }}
@@ -34,7 +37,7 @@ export const StrokeCertifications = () => {
                 <MultiSelectButtons
                     input={state.values.step5?.['stroke-application-date'] || null}
                     clear={false}
-                    id='stroke-application-date-btns'
+                    id='stroke-application-date'
                     step='step5'
                     single={true}
                     btnatr={{ disabled: false }}

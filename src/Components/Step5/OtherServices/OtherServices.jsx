@@ -2,11 +2,13 @@ import React, { useState, useContext } from 'react'
 import { FormContext } from '../../FormContext/FormContext'
 import { MultiSelectButtons } from '../../FormComponents/MultiSelectButtons/MultiSelectButtons'
 
+// option other services component of step 5
 export const OtherServices = () => {
 
     const { state, dispatch } = useContext(FormContext)
     const otherServices = state.values.step5?.['other-services'] || []
 
+    // dispatch (set value) to context when input is recieved
     const handleKeyPress = (e) => {
         if (e.key == 'Enter') {
             dispatch({

@@ -2,12 +2,13 @@ import { useState, useEffect, useContext } from 'react'
 import { FormContext } from '../../FormContext/FormContext'
 import { ReviewCard } from '../../FormComponents/ReviewCard/ReviewCard'
 
+// Review table for step 1
 export const ReviewTableStep1 = () => {
     const { state, dispatch } = useContext(FormContext)
-
     const step1 = state.values['step1']
     const step3 = state.values['step3']
 
+    // data for ReviewCard to create ReviewCard component in table
     const step1CardData = [
         `${step1?.['first-name'] || ''} ${step1?.['last-name'] || ''}`,
         `${step1?.['title-name'] || ''}`,
@@ -18,6 +19,7 @@ export const ReviewTableStep1 = () => {
             ${step3?.['state-billing-card'] || ''}
             ${step3?.['zip-code-billing-card'] || ''}`
     ]
+
     return (
         <div className='w-full review-table grid grid-cols-4 gap-4'>
             <div className='fields col-span-1 col-start-1 flex text-sm font-bold text-[#707070] ms-5  pb-2 border-b-1 border-[#EBEBEB]'>

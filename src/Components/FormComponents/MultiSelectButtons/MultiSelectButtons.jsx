@@ -9,19 +9,20 @@ export const MultiSelectButtons = ({ input, classname, clear, id, step, single, 
 
     const { dispatch } = useContext(FormContext)
 
-    const remove = (action) => {
+    // Remove item among when multiple selected items
+    const removeMultiple = (action) => {
         const next = input.filter((item) => item !== action)
         dispatch({ type: 'SET_VALUE', step: step, field: id, payload: next })
     }
 
+    // Remove item among single selected item
     const removeSingle = () => {
         dispatch({ type: 'SET_VALUE', step: step, field: id, payload: null })
     }
 
-    let multiButtons
-
     // using different types of buttons (clear vs filled) and different types of input (array vs single)
     // to show and remove multiple selections
+    let multiButtons
     if (clear) {
         if (single) {
             multiButtons = (input && <ClearSelectButton
@@ -31,20 +32,20 @@ export const MultiSelectButtons = ({ input, classname, clear, id, step, single, 
                 type='button'
                 classname={`me-2 ${btnclass}`}
                 svgclass={svgclass}
-                />
-            
+            />
+
             )
         } else {
             multiButtons = (input.map((action, index) => (
                 <ClearSelectButton
                     attr={btnattr}
                     key={index}
-                    click={() => remove(action)}
+                    click={() => removeMultiple(action)}
                     text={action}
                     type='button'
                     classname={`me-2 ${btnclass}`}
                     svgclass={svgclass}
-                    />
+                />
             )))
         }
     } else {
@@ -56,24 +57,25 @@ export const MultiSelectButtons = ({ input, classname, clear, id, step, single, 
                 type='button'
                 classname={`me-2 ${btnclass}`}
                 svgclass={svgclass}
-                />)
+            />)
         } else {
             multiButtons = (input.map((action, index) => (
-                <ClearSelectButton
+                <FilledSelectButton
                     attr={btnattr}
                     key={index}
-                    click={() => remove(action)}
+                    click={() => removeMultiple(action)}
                     text={action}
                     type='button'
                     classname={`me-2 ${btnclass}`}
                     svgclass={svgclass}
-                    />
+                />
             )))
         }
     }
 
     return (
-        <div className={` my-3 ${classname} ${single ? 'flex justify-center' : 'grid grid-cols-5 gap-4'} `} >
+        <div className={` my-3 flex justify-start items-center flex-wrap space-x-2 space-y-2 ${classname} 
+        `} >
             {multiButtons}
         </div>
     )

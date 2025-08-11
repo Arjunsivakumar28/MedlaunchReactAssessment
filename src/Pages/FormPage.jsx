@@ -11,6 +11,7 @@ import SiteInformation from '../Components/Step4/SiteInformation'
 import { FormTitle } from '../Components/MainPageComponents/FormTitleComponent/FormTitle'
 import { LowerButtons } from '../Components/MainPageComponents/LowerButtonComponent/LowerButtons'
 
+// Names of each step of form
 const stepTitles = {
     1: 'New DNV Quote Request',
     2: 'Facility Details',
@@ -20,23 +21,28 @@ const stepTitles = {
     6: 'Review & Submit'
 }
 
+// main form page (contain all steps)
 function FormPage() {
 
     const { state, dispatch } = useContext(FormContext)
     const [step, setStep] = useState(1)
 
+    // process save
     const save = () => {
         console.log(state.values)
     }
 
+    // process next
     const next = () => {
         setStep(step + 1)
     }
 
+    // process back
     const back = () => {
         setStep(step - 1)
     }
 
+    // process submit
     const submit = () => {
         console.log(state)
     }

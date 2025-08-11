@@ -4,6 +4,7 @@ import { StandardsToApply } from './StandardsToApply/StandardsToApply'
 import { StrokeCertifications } from './StrokeCertifications/StrokeCertifications'
 import { ThromboDates } from './ThromboDates/ThromboDates'
 
+// Step 5 main page
 function ServicesAndCertification() {
 
     const [active, setActive] = useState(false)

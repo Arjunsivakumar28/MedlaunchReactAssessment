@@ -1,5 +1,6 @@
 import React from 'react'
 
+// search bar component (uses useState from parent to pass one query to parent components)
 export const SearchBar = ({ query, setQuery }) => {
     return (
         <div className='w-full flex justify-between items-center border border-[#BBBBBB] px-2 rounded-lg mb-2' >

@@ -2,12 +2,14 @@ import React, { useEffect, useState, useContext } from 'react'
 import { FormContext } from '../../FormContext/FormContext'
 import { TopNavBar } from '../../FormComponents/TopNavBar/TopNavBar'
 import { SearchBar } from '../../FormComponents/SearchBar/SearchBar'
-import { OptionsCard } from '../OptionsCard/OptionsCard'
+import { OptionsCard } from '../../FormComponents/OptionsCard/OptionsCard'
 import { ClearButton } from '../../Buttons/ClearButtonComponent/ClearButton'
-import {OtherServices} from '../OtherServices/OtherServices'
+import { OtherServices } from '../OtherServices/OtherServices'
 
+// navigation bar sections
 const navs = ['All Services', 'Clinical', 'Surgical', 'Diagonstic', 'Rehabilitation', 'Speciality']
 
+// services offered list
 const services = {
     'Emergency & Critical Care': ['Emergency Department', 'Neonatal internsive care', 'Pediatric internsive care', 'Prediatrice normal care'],
     'Cardiac Services': ['Cardiac catheterization lab', 'open heart'],
@@ -15,14 +17,16 @@ const services = {
     'Rehabilitation Services': ['physical rehabilitation', 'physical therapy', 'occupational therapy', 'speech/language therapy', 'audiology']
 }
 
+// main service offering component of step 5
 export const ServiceOffering = () => {
 
-    const {state, dispatch} = useContext(FormContext)
+    const { state, dispatch } = useContext(FormContext)
     const [section, setSection] = useState('AllService')
     const [sectionCard, setSectionCard] = useState(services)
     const [query, setQuery] = useState('')
     const [otherServices, setOtherServices] = useState(state.values.step5?.['other-services']?.length > 0)
 
+    // filter services based on section selected in navigation
     useEffect(() => {
         let newStatus
         switch (section) {
@@ -58,10 +62,10 @@ export const ServiceOffering = () => {
             <SearchBar query={query} setQuery={setQuery} />
             <div className='option-card-container w-full grid grid-cols-2 gap-4'>
 
-                {/* filtering services based on section and search */}
+                {/* filtering services based on section and search query */}
                 {Object.entries(sectionCard).map(([key, service]) => (
-                    query == '' ? <OptionsCard key={key} title={key} options={service} /> :
-                        (key.toLowerCase().includes(query) || service.some(item => item.toLowerCase().includes(query))) && <OptionsCard key={key} title={key} options={service} />
+                    query == '' ? <OptionsCard key={key} step='step5' title={key} options={service} /> :
+                        (key.toLowerCase().includes(query) || service.some(item => item.toLowerCase().includes(query))) && <OptionsCard key={key} step='step5' title={key} options={service} />
                 ))}
             </div>
 
@@ -71,7 +75,7 @@ export const ServiceOffering = () => {
                 click={() => setOtherServices(!otherServices)}
                 calssname=''
             />
-            {otherServices && <OtherServices /> }
+            {otherServices && <OtherServices />}
 
         </div>
     )

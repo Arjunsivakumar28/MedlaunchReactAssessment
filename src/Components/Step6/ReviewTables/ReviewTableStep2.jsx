@@ -1,6 +1,7 @@
 import {useContext} from  'react'
 import { FormContext } from '../../FormContext/FormContext'
 
+// Review table for step 2
 export const ReviewTableStep2 = () => {
 
     const { state, dispatch } = useContext(FormContext)

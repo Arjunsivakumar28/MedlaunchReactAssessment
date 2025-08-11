@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-
+// Top navigation bar (passes selected section to parent using useState from parent)
 export const TopNavBar = ({ navs, btnclassname, selected, setSelected }) => {
 
     return (

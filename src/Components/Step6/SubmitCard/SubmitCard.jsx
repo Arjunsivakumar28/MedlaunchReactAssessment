@@ -2,6 +2,7 @@ import React from 'react'
 import { CheckboxInput } from '../../FormComponents/CheckboxInput/CheckboxInput'
 import { ClearButton } from '../../Buttons/ClearButtonComponent/ClearButton'
 
+// Final submission component of step 6
 export const SubmitCard = () => {
     return (
         <div className=' w-full rounded-lg border border-[#D6D6D6] flex flex-col items-start justify-center p-6' >

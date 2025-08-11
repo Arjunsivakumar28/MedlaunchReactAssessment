@@ -4,6 +4,7 @@ import { CheckboxInput } from '../../FormComponents/CheckboxInput/CheckboxInput'
 import { FieldInput } from '../../FormComponents/FieldInput/FieldInput'
 import { DropDownSelect } from '../../FormComponents/DropDownSelect/DropDownSelect'
 
+// list of states for address
 const states = [
     { code: "AL", name: "Alabama" },
     { code: "AK", name: "Alaska" },
@@ -63,12 +64,13 @@ const states = [
     { code: "VI", name: "U.S. Virgin Islands" },
 ];
 
+// Contact card component of step 3 (with triggerable billing section)
 export const ContactCard = ({ title, billing, label }) => {
 
     const [checked, isChecked] = useState(false)
     const { state, dispatch } = useContext(FormContext)
 
-    // effect to handle checkbox interaction 
+    // effect to handle checkbox interaction (updating step3 on step1 changes when checked)
     useEffect(() => {
         checked && dispatch({ type: 'SET_VALUE', step: 'step3', field: 'first-name-leadership-' + label, payload: state.values.step1['first-name'] })
     }, [state.values.step1['first-name'], checked])
@@ -83,6 +85,7 @@ export const ContactCard = ({ title, billing, label }) => {
     }, [state.values.step1['work-phone'], checked])
 
     // handle default after checkbox interaction 
+    // (bug fix to handle setting value immediately affter checkbox check)
     const firstAttr = {
         value: checked ? state.values.step1['first-name'] : undefined
     }
@@ -106,13 +109,13 @@ export const ContactCard = ({ title, billing, label }) => {
             </div>
             <FieldInput step='step3' type='text' label='Phone*' classname='mb-5' idname={`phone-number-leadership-${label}`} inpAttr={phoneAttr} />
             <FieldInput step='step3' type='text' label='Email*' classname='mb-5' idname={`email-leadership-${label}`} inpAttr={emailAttr} />
+            
             {billing &&
                 <div className='billing-card w-full' >
                     <h1 className='w-full text-left font-bold text-xl text-[#343434] mb-4' >Billing Address</h1>
                     <FieldInput step='step3' type='text' label='Street Address*' classname='mb-5' idname={`street-address-leadership-${label}`} />
                     <div className='names w-full flex justify-stretch items-center mb-5'>
                         <FieldInput step='step3' type='text' label='City*' classname='' idname={`city-${label}`} />
-                        {/* <FieldInput step='step3' type='text' label='State*' classname='ms-2' idname={`state-${label}` } /> */}
                         <DropDownSelect options={states} defaultoption='Select States' step='step3' classname='state-select ms-2' idname={`state-${label}`} label='State*' />
                         <FieldInput step='step3' type='text' label='Zip Code*' classname='ms-2' idname={`zip-code-${label}`} />
                     </div>

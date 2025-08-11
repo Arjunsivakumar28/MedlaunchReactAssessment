@@ -3,6 +3,9 @@ import { FormContext } from '../../FormContext/FormContext'
 import { DatePickerComponent } from '../../FormComponents/DatePickerComponent/DatePickerComponent'
 import { MultiSelectButtons } from '../../FormComponents/MultiSelectButtons/MultiSelectButtons'
 
+// thrombolytic admissions and thrombectomies dates section of step 5
+// date selection done using DatePickerComponent and selction displayed 
+// using MultiSelectButtons component
 export const ThromboDates = () => {
 
     const{state, dispatch} = useContext(FormContext)
@@ -38,7 +41,7 @@ export const ThromboDates = () => {
             <MultiSelectButtons
                 input={state.values['step5']?.['thrombectomies'] || []}
                 clear={false}
-                id='thrombectomiess'
+                id='thrombectomies'
                 step='step5'
                 single={false}
                 btnatr={{ disabled: false }}
