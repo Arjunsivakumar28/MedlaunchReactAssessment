@@ -113,7 +113,7 @@ export const ContactCard = ({ title, billing, label }) => {
                     <div className='names w-full flex justify-stretch items-center mb-5'>
                         <FieldInput step='step3' type='text' label='City*' classname='' idname={`city-${label}`} />
                         {/* <FieldInput step='step3' type='text' label='State*' classname='ms-2' idname={`state-${label}` } /> */}
-                        <DropDownSelect options={states} step='step3' classname='state-select ms-2' idname={`state-${label}`} label='State*' />
+                        <DropDownSelect options={states} defaultoption='Select States' step='step3' classname='state-select ms-2' idname={`state-${label}`} label='State*' />
                         <FieldInput step='step3' type='text' label='Zip Code*' classname='ms-2' idname={`zip-code-${label}`} />
                     </div>
                 </div>

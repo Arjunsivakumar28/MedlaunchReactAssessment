@@ -1,16 +1,16 @@
-import React, { useContext, useState } from 'react'
+import React, {useContext} from 'react'
 import { FormContext } from '../../FormContext/FormContext'
 
-export const DropDownSelect = ({ options, step, defaultoption, classname, labelclassname = '', idname, label, inpAttr }) => {
-
+export const MultiChoiceDropDown = ({ options, defaultoption, step, classname, labelclassname = '', idname, label, inpAttr }) => {
     const { state, dispatch } = useContext(FormContext)
-    const [value, setValue] = useState(null)
+    const stored = state.values[step]?.[idname] || []
 
 
     const handleOnChange = (e) => {
-        setValue(e.target.value)
-        console.log('selectd: ', value)
-        dispatch({ type: 'SET_VALUE', step: step, field: idname, payload: e.target.value })
+        if (e.target.value != '' && !stored.includes(e.target.value)) {
+            dispatch({ type: 'SET_VALUE', step: step, field: idname, payload: [...stored, e.target.value] })
+        }
+
     }
 
     return (
@@ -19,16 +19,15 @@ export const DropDownSelect = ({ options, step, defaultoption, classname, labelc
             <select
                 id={label}
                 name={label}
-                value={value ?? ''}
                 onChange={handleOnChange}
                 className='text-sm font-medium text-black p-3 border rounded-lg w-full h-full'
             >
                 <option value='' className='placeholder text-sm font-medium text-[#808080]'>
                     {defaultoption}
                 </option>
-                {options.map(({ code, name }) => (
-                    <option key={code} value={code}>
-                        {name}
+                {options.map((value, index ) => (
+                    <option key={index} value={value}>
+                        {value}
                     </option>
                 ))}
             </select>
