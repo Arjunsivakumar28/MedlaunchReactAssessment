@@ -2,7 +2,7 @@ import React from 'react'
 import { ClearButton } from '../../Buttons/ClearButtonComponent/ClearButton'
 import { FilledButton } from '../../Buttons/FilledButtonComponent/FilledButton'
 
-export const LowerButtons = ({step, onBack, onNext, onSave}) => {
+export const LowerButtons = ({step, onBack, onNext, onSave, onSubmit}) => {
 
     let backButton
     if (step > 1) {
@@ -15,7 +15,7 @@ export const LowerButtons = ({step, onBack, onNext, onSave}) => {
     if (step < 6) {
         frontButton = <FilledButton text='Next' type='button' click={onNext} classname='ms-4' />
     } else {
-        frontButton = <FilledButton text='Submit Application' type='submit' classname='ms-auto' />
+        frontButton = <FilledButton text='Submit Application' type='button' click={onSubmit} classname='ms-auto' />
     }
 
   return (

@@ -1,4 +1,4 @@
-import React, {createContext, useReducer} from 'react'
+import React, { createContext, useReducer } from 'react'
 
 export const FormContext = createContext()
 
@@ -10,13 +10,15 @@ const initialState = {
         'step4': {},
         'step5': {},
         'step6': {}
-    }
+    },
+    currentStep: 1
 }
 
 function reducer(state, action) {
+
     switch (action.type) {
         case 'SET_VALUE':
-            const {step, field, payload} = action
+            const { step, field, payload } = action
             return {
                 ...state,
                 values: {
@@ -24,23 +26,20 @@ function reducer(state, action) {
                     [step]: {
                         ...state.values[step], [field]: payload
                     }
-            
+
                 }
             }
-        
-        case 'GET_VALUE':
-            return state.values[step][field]
         default:
             return state;
     }
 }
 
-export function FormProvider({children}) {
+export function FormProvider({ children }) {
 
     const [state, dispatch] = useReducer(reducer, initialState)
 
     return (
-        <FormContext.Provider value={{state, dispatch}}>
+        <FormContext.Provider value={{ state, dispatch }}>
             {children}
         </FormContext.Provider>
     )

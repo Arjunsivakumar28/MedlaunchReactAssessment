@@ -5,7 +5,7 @@ import { FormContext } from '../../FormContext/FormContext'
 
 // Displays selected items with filters on type of button display, and if inputs are singular 
 // or multiple items can be selected 
-export const MultiSelectButtons = ({ input, classname, clear, id, step, single }) => {
+export const MultiSelectButtons = ({ input, classname, clear, id, step, single, btnclass, btnattr, svgclass }) => {
 
     const { dispatch } = useContext(FormContext)
 
@@ -23,44 +23,50 @@ export const MultiSelectButtons = ({ input, classname, clear, id, step, single }
     if (clear) {
         if (single) {
             multiButtons = (input && <ClearSelectButton
+                attr={btnattr}
                 click={removeSingle}
                 text={input}
                 type='button'
-                classname='me-2' />)
+                classname={`me-2 ${btnclass}`}
+                svgclass={svgclass}
+                />
+            
+            )
         } else {
             multiButtons = (input.map((action, index) => (
                 <ClearSelectButton
+                    attr={btnattr}
                     key={index}
                     click={() => remove(action)}
                     text={action}
                     type='button'
-                    classname='me-2' />
+                    classname={`me-2 ${btnclass}`}
+                    svgclass={svgclass}
+                    />
             )))
         }
     } else {
         if (single) {
             multiButtons = (input && <FilledSelectButton
+                attr={btnattr}
                 click={removeSingle}
                 text={input}
                 type='button'
-                classname='me-2' />)
+                classname={`me-2 ${btnclass}`}
+                svgclass={svgclass}
+                />)
         } else {
             multiButtons = (input.map((action, index) => (
                 <ClearSelectButton
+                    attr={btnattr}
                     key={index}
                     click={() => remove(action)}
                     text={action}
                     type='button'
-                    classname='me-2' />
+                    classname={`me-2 ${btnclass}`}
+                    svgclass={svgclass}
+                    />
             )))
-            multiButtons = input.map((action, index) => (
-                <FilledSelectButton
-                    key={index}
-                    click={() => remove(action)}
-                    text={action}
-                    type='button'
-                    classname='me-2' />
-            ))
         }
     }
 

@@ -36,7 +36,9 @@ export const StandardsToApply = ({ }) => {
                             clear={false}
                             id='stroke-expiry-date-btns'
                             step='step5'
-                            single={true} />
+                            single={true} 
+                            btnatr={{ disabled: false }}
+                            svgclass='show' />
                     </div>
                     <div className='stroke-certification w-full flex flex-col justify-center items-start'>
                         <DatePickerComponent
@@ -50,39 +52,46 @@ export const StandardsToApply = ({ }) => {
                             clear={false}
                             id='stroke-application-date-btns'
                             step='step5'
-                            single={true} />
+                            single={true}
+                            btnatr={{ disabled: false }}
+                            svgclass='show' />
                     </div>
                 </div>
 
-                <DatePickerComponent 
+                <DatePickerComponent
                     step='step5'
                     id='thrombolytic-admissions'
                     classname='w-220'
                     label='Dates of last twenty-five thrombolytic administrations'
                     single={false}
+
                 />
-                <MultiSelectButtons 
+                <MultiSelectButtons
                     input={state.values['step5']?.['thrombolytic-admissions'] || []}
                     clear={false}
                     id='thrombolytic-admissions'
                     step='step5'
                     single={false}
+                    btnatr={{ disabled: false }}
+                    svgclass='ms-1!'
 
                 />
 
-                <DatePickerComponent 
+                <DatePickerComponent
                     step='step5'
                     id='thrombectomies'
                     classname='w-220'
                     label='Dates of last fifteen thrombectomies'
                     single={false}
                 />
-                <MultiSelectButtons 
+                <MultiSelectButtons
                     input={state.values['step5']?.['thrombectomies'] || []}
                     clear={false}
                     id='thrombectomiess'
                     step='step5'
                     single={false}
+                    btnatr={{ disabled: false }}
+                    svgclass='ms-1!'
 
                 />
 

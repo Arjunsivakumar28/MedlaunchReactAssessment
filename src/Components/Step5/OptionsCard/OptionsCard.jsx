@@ -8,7 +8,6 @@ export const OptionsCard = ({ title, options }) => {
             {options.map((opt, index) => (
                 <CheckboxInput
                     key={index}
-                    // setCheck=''
                     step='step5'
                     label={opt}
                     classname='font-medium text-black text-base' idname={`check-${opt}-${title}`}
