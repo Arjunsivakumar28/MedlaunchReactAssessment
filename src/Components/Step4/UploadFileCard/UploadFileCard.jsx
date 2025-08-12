@@ -8,7 +8,7 @@ export const UploadFileCard = () => {
     const { state, dispatch } = useContext(FormContext)
     const files = state.values?.step4?.csvFiles || []
 
-    // upload the file
+    // upload the csv file
     const onChange = (e) => {
         const selected = Array.from(e.target.files || [])
         if (selected.length) {
@@ -22,7 +22,7 @@ export const UploadFileCard = () => {
 
     }
 
-    // remove file
+    // remove csv file
     const onRemove = (index) => {
         const next = files.filter((_, i) => i !== index)
         dispatch({ type: 'SET_VALUE', step: 'step4', field: 'csvFiles', payload: next })

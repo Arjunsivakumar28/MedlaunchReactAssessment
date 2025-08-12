@@ -11,7 +11,8 @@ const initialState = {
         'step5': {},
         'step6': {}
     },
-    currentStep: 1
+    currentStep: 1,
+    saveTick: 1
 }
 
 function reducer(state, action) {
@@ -26,8 +27,30 @@ function reducer(state, action) {
                     [step]: {
                         ...state.values[step], [field]: payload
                     }
-
                 }
+            }
+        case 'NEXT_STEP':
+            const nextStep = Math.min(Math.max(state.currentStep + 1, 1), 6)
+            return {
+                ...state,
+                currentStep: nextStep
+            }
+        case 'PREV_STEP':
+            const prevStep = Math.min(Math.max(state.currentStep - 1, 1), 6)
+            return {
+                ...state,
+                currentStep: prevStep
+            }
+        case 'SET_STEP':
+            const numStep = Math.min(Math.max(action.numStep, 1), 6)
+            return {
+                ...state,
+                currentStep: numStep
+            }
+        case 'REQUEST_SAVE':
+            return {
+                ...state,
+                saveTick: state.saveTick + 1
             }
         default:
             return state;

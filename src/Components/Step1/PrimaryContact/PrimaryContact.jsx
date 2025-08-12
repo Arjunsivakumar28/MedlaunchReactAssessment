@@ -6,16 +6,18 @@ import { EmailAddress } from '../EmailAddress/EmailAddress'
 // primary contact secton of step 1
 export const PrimaryContact = () => {
 
-    const {state, dispatch } = useContext(FormContext)
+    const { state, dispatch } = useContext(FormContext)
 
-    const [email, setEmail] = useState('')
+    const [email, setEmail] = useState(state.values['step1']['email'])
     const [verify, setVerify] = useState(false)
 
     // handle email in separate component for verification and useEffect for saving
     useEffect(() => {
-        dispatch({ type: 'SET_VALUE', step: 'step1', field: 'email', payload: email })
-    }, [email])
-    
+        if (state.currentStep == 1) {
+            dispatch({ type: 'SET_VALUE', step: 'step1', field: 'email', payload: email })
+        }
+    }, [state.saveTick])
+
     return (
         <div className='primary-contact-info w-full flex flex-col items-start space-y-8' >
             <div className='title flex flex-col items-start justify-start w-full mb-5'>

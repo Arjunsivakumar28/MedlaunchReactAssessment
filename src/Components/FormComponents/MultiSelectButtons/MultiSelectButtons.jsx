@@ -1,24 +1,35 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { ClearSelectButton } from '../../Buttons/ClearSelectButtonComponent/ClearSelectButton'
 import { FilledSelectButton } from '../../Buttons/FilledSelectButtonComponents/FilledSelectButton'
 import { FormContext } from '../../FormContext/FormContext'
 
 // Displays selected items with filters on type of button display, and if inputs are singular 
 // or multiple items can be selected 
-export const MultiSelectButtons = ({ input, classname, clear, id, step, single, btnclass, btnattr, svgclass }) => {
+export const MultiSelectButtons = ({ input, action, setAction, classname, clear, id, step, single, btnclass, btnattr, svgclass }) => {
 
-    const { dispatch } = useContext(FormContext)
+    const { state, dispatch } = useContext(FormContext)
 
     // Remove item among when multiple selected items
-    const removeMultiple = (action) => {
-        const next = input.filter((item) => item !== action)
-        dispatch({ type: 'SET_VALUE', step: step, field: id, payload: next })
+    const removeMultiple = (val) => {
+        const next = input.filter((item) => item !== val)
+        setAction(next)
     }
 
     // Remove item among single selected item
     const removeSingle = () => {
-        dispatch({ type: 'SET_VALUE', step: step, field: id, payload: null })
+        console.log('at single remove: ', action)
+        setAction(null)
     }
+
+    // save values
+    useEffect(() => {
+        dispatch({
+            type: 'SET_VALUE',
+            step: step,
+            field: id,
+            payload: action
+        })
+    }, [state.saveTick])
 
     // using different types of buttons (clear vs filled) and different types of input (array vs single)
     // to show and remove multiple selections
@@ -36,12 +47,12 @@ export const MultiSelectButtons = ({ input, classname, clear, id, step, single, 
 
             )
         } else {
-            multiButtons = (input.map((action, index) => (
+            multiButtons = (input.map((val, index) => (
                 <ClearSelectButton
                     attr={btnattr}
                     key={index}
-                    click={() => removeMultiple(action)}
-                    text={action}
+                    click={() => removeMultiple(val)}
+                    text={val}
                     type='button'
                     classname={`me-2 ${btnclass}`}
                     svgclass={svgclass}
@@ -59,12 +70,12 @@ export const MultiSelectButtons = ({ input, classname, clear, id, step, single, 
                 svgclass={svgclass}
             />)
         } else {
-            multiButtons = (input.map((action, index) => (
+            multiButtons = (input.map((val, index) => (
                 <FilledSelectButton
                     attr={btnattr}
                     key={index}
-                    click={() => removeMultiple(action)}
-                    text={action}
+                    click={() => removeMultiple(val)}
+                    text={val}
                     type='button'
                     classname={`me-2 ${btnclass}`}
                     svgclass={svgclass}

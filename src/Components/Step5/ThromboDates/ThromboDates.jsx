@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import { FormContext } from '../../FormContext/FormContext'
 import { DatePickerComponent } from '../../FormComponents/DatePickerComponent/DatePickerComponent'
 import { MultiSelectButtons } from '../../FormComponents/MultiSelectButtons/MultiSelectButtons'
@@ -9,6 +9,8 @@ import { MultiSelectButtons } from '../../FormComponents/MultiSelectButtons/Mult
 export const ThromboDates = () => {
 
     const{state, dispatch} = useContext(FormContext)
+    const [thrombolyticAdmissions, setThrombolyticAdmissions] = useState(state.values.step5?.['thrombolytic-admissions'] || [])
+    const [thrombectomies, setThrombectomies] = useState(state.values.step5?.['thrombectomies'] || [])
 
     return (
         <div className='thrombos w-full flex flex-col justify-center items-start' >
@@ -17,16 +19,20 @@ export const ThromboDates = () => {
                 id='thrombolytic-admissions'
                 classname='w-220'
                 label='Dates of last twenty-five thrombolytic administrations'
+                action={thrombolyticAdmissions}
+                setAction={setThrombolyticAdmissions}
                 single={false}
 
             />
             <MultiSelectButtons
-                input={state.values['step5']?.['thrombolytic-admissions'] || []}
+                input={thrombolyticAdmissions}
                 clear={false}
                 id='thrombolytic-admissions'
                 step='step5'
                 single={false}
                 btnatr={{ disabled: false }}
+                action={thrombolyticAdmissions}
+                setAction={setThrombolyticAdmissions}
                 svgclass='ms-1!'
 
             />
@@ -36,15 +42,19 @@ export const ThromboDates = () => {
                 id='thrombectomies'
                 classname='w-220'
                 label='Dates of last fifteen thrombectomies'
+                action={thrombectomies}
+                setAction={setThrombectomies}
                 single={false}
             />
             <MultiSelectButtons
-                input={state.values['step5']?.['thrombectomies'] || []}
+                input={thrombectomies}
                 clear={false}
                 id='thrombectomies'
                 step='step5'
                 single={false}
                 btnatr={{ disabled: false }}
+                action={thrombectomies}
+                setAction={setThrombectomies}
                 svgclass='ms-1!'
 
             />

@@ -69,6 +69,10 @@ export const ContactCard = ({ title, billing, label }) => {
 
     const [checked, isChecked] = useState(false)
     const { state, dispatch } = useContext(FormContext)
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
+    const [email, setEmail] = useState('')
+    const [phone, setPhone] = useState('')
 
     // effect to handle checkbox interaction (updating step3 on step1 changes when checked)
     useEffect(() => {
@@ -84,8 +88,7 @@ export const ContactCard = ({ title, billing, label }) => {
         checked && dispatch({ type: 'SET_VALUE', step: 'step3', field: 'phone-number-leadership-' + label, payload: state.values.step1['work-phone'] })
     }, [state.values.step1['work-phone'], checked])
 
-    // handle default after checkbox interaction 
-    // (bug fix to handle setting value immediately affter checkbox check)
+    // handle value after checkbox interaction 
     const firstAttr = {
         value: checked ? state.values.step1['first-name'] : undefined
     }
@@ -116,7 +119,13 @@ export const ContactCard = ({ title, billing, label }) => {
                     <FieldInput step='step3' type='text' label='Street Address*' classname='mb-5' idname={`street-address-leadership-${label}`} />
                     <div className='names w-full flex justify-stretch items-center mb-5'>
                         <FieldInput step='step3' type='text' label='City*' classname='' idname={`city-${label}`} />
-                        <DropDownSelect options={states} defaultoption='Select States' step='step3' classname='state-select ms-2' idname={`state-${label}`} label='State*' />
+                        <DropDownSelect 
+                            options={states} 
+                            defaultoption='Select States'
+                            step='step3' 
+                            classname='state-select ms-2'
+                            idname={`state-${label}`} 
+                            label='State*' />
                         <FieldInput step='step3' type='text' label='Zip Code*' classname='ms-2' idname={`zip-code-${label}`} />
                     </div>
                 </div>

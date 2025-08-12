@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { FormContext } from '../../FormContext/FormContext'
 
 // Regular dropdown component to select from multiple options
@@ -10,9 +10,14 @@ export const DropDownSelect = ({ options, step, defaultoption, classname, labelc
     // dispatch (set value) to context when input is recieved
     const handleOnChange = (e) => {
         setValue(e.target.value)
-        console.log('selectd: ', value)
-        dispatch({ type: 'SET_VALUE', step: step, field: idname, payload: e.target.value })
     }
+
+    // save local input value to context when save button is pressed
+    useEffect(() => {
+        if (state.currentStep == parseInt(step.slice(-1))) {
+            dispatch({ type: 'SET_VALUE', step: step, field: idname, payload: value })
+        }
+    }, [state.saveTick])
 
     return (
         <label name='dropdown' className={`${classname} dropdown flex flex-col items-start justify-start w-full h-full`}>

@@ -1,27 +1,28 @@
-import React, {useContext} from 'react'
+import React, { useContext, useEffect } from 'react'
 import { FormContext } from '../../FormContext/FormContext';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 // Select and store date
-export const DatePickerComponent = ({step, id, classname, label, single}) => {
+export const DatePickerComponent = ({ step, id, classname, label, single, action, setAction }) => {
 
-    const {state, dispatch} = useContext(FormContext)
+    const { state, dispatch } = useContext(FormContext)
 
-    // define dateObj and dispatch for single or multiple date selections
-    let dateObj
-    if (single) {
-        dateObj = state.values[step]?.[id] || null
-    } else {
-        dateObj = state.values[step]?.[id] || []
-    }
-
-    // dispatch (set value) to context when input is recieved
+    // set value when input is recieved
     // payload changes based on single or multiple dates picked
     const setDate = (date) => {
-        single ? dispatch({ type: 'SET_VALUE', step: step, field: id, payload: date.toLocaleDateString() }) 
-                : dispatch({ type: 'SET_VALUE', step: step, field: id, payload: [...dateObj, date.toLocaleDateString()] })
+        console.log(date, action)
+        single ? setAction(date.toLocaleDateString())
+            : setAction([...action, date.toLocaleDateString()])
+        // single ? dispatch({ type: 'SET_VALUE', step: step, field: id, payload: date.toLocaleDateString() })
+        //     : dispatch({ type: 'SET_VALUE', step: step, field: id, payload: [...dateObj, date.toLocaleDateString()] })
     }
+
+    // save date to context
+    useEffect(() => {
+        dispatch({ type: 'SET_VALUE', step: step, field: id, payload: action })
+    }, [state.saveTick])
+
 
     return (
         <div className='w-full flex flex-col justify-center items-start'>
