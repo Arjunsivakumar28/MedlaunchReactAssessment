@@ -69,23 +69,23 @@ export const ContactCard = ({ title, billing, label }) => {
 
     const [checked, isChecked] = useState(false)
     const { state, dispatch } = useContext(FormContext)
-    const [firstName, setFirstName] = useState('')
-    const [lastName, setLastName] = useState('')
-    const [email, setEmail] = useState('')
-    const [phone, setPhone] = useState('')
+    const [firstName, setFirstName] = useState(state.values.step3['first-name-leadership-' + label])
+    const [lastName, setLastName] = useState(state.values.step3['last-name-leadership-' + label])
+    const [email, setEmail] = useState(state.values.step3['email-leadership-' + label])
+    const [phone, setPhone] = useState(state.values.step3['phone-number-leadership-' + label])
 
     // effect to handle checkbox interaction (updating step3 on step1 changes when checked)
     useEffect(() => {
-        checked && dispatch({ type: 'SET_VALUE', step: 'step3', field: 'first-name-leadership-' + label, payload: state.values.step1['first-name'] })
+        checked && setFirstName(state.values.step1['first-name'])
     }, [state.values.step1['first-name'], checked])
     useEffect(() => {
-        checked && dispatch({ type: 'SET_VALUE', step: 'step3', field: 'last-name-leadership-' + label, payload: state.values.step1['last-name'] })
+        checked && setLastName(state.values.step1['last-name'])
     }, [state.values.step1['last-name'], checked])
     useEffect(() => {
-        checked && dispatch({ type: 'SET_VALUE', step: 'step3', field: 'email-leadership-' + label, payload: state.values.step1['email'] })
+        checked && setEmail(state.values.step1['email'])
     }, [state.values.step1['email'], checked])
     useEffect(() => {
-        checked && dispatch({ type: 'SET_VALUE', step: 'step3', field: 'phone-number-leadership-' + label, payload: state.values.step1['work-phone'] })
+        checked && setPhone(state.values.step1['work-phone'])
     }, [state.values.step1['work-phone'], checked])
 
     // handle value after checkbox interaction 
@@ -102,16 +102,27 @@ export const ContactCard = ({ title, billing, label }) => {
         value: checked ? state.values.step1['work-phone'] : undefined
     }
 
+    // save values to context
+    useEffect(() => {
+        if (state.currentStep == 3) {
+            dispatch({ type: 'SET_VALUE', step: 'step3', field: 'first-name-leadership-' + label, payload: firstName })
+            dispatch({ type: 'SET_VALUE', step  : 'step3', field: 'last-name-leadership-' + label, payload: lastName })
+            dispatch({ type: 'SET_VALUE', step: 'step3', field: 'email-leadership-' + label, payload: email })
+            dispatch({ type: 'SET_VALUE', step: 'step3', field: 'phone-number-leadership-' + label, payload: phone })
+        }
+    }, [state.saveTick])
+
+
     return (
         <div className={` ${label} contact-card w-full flex flex-col items-start justify-center border rounded-lg p-6`} >
             <h1 className='w-full text-left font-bold text-xl text-[#343434] mb-4' >{title}</h1>
             <CheckboxInput step='step3' idname={`checkbox-leadership-${label}`} setCheck={isChecked} label='Same as Primary Contact entered in Step 1' classname='mb-4' labelclassname='ms-2 text-base font-medium text-black' />
             <div className='names w-full flex justify-stretch items-center mb-5'>
-                <FieldInput step='step3' type='text' label='First Name*' classname='' idname={`first-name-leadership-${label}`} inpAttr={firstAttr} />
-                <FieldInput step='step3' type='text' label='Last Name*' classname='ms-2' idname={`last-name-leadership-${label}`} inpAttr={lastAttr} />
+                <FieldInput setValue={setFirstName} step='step3' type='text' label='First Name*' classname='' idname={`first-name-leadership-${label}`} inpAttr={firstAttr} />
+                <FieldInput setValue={setLastName} step='step3' type='text' label='Last Name*' classname='ms-2' idname={`last-name-leadership-${label}`} inpAttr={lastAttr} />
             </div>
-            <FieldInput step='step3' type='text' label='Phone*' classname='mb-5' idname={`phone-number-leadership-${label}`} inpAttr={phoneAttr} />
-            <FieldInput step='step3' type='text' label='Email*' classname='mb-5' idname={`email-leadership-${label}`} inpAttr={emailAttr} />
+            <FieldInput setValue={setPhone} step='step3' type='text' label='Phone*' classname='mb-5' idname={`phone-number-leadership-${label}`} inpAttr={phoneAttr} />
+            <FieldInput setValue={setEmail} step='step3' type='text' label='Email*' classname='mb-5' idname={`email-leadership-${label}`} inpAttr={emailAttr} />
             
             {billing &&
                 <div className='billing-card w-full' >
